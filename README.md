@@ -46,3 +46,9 @@ echo $getTiktokUser->details('@evikza'); // or evikza
   "error": "This account cannot be found."
 }
 ```
+
+### Version
+
+```code
+0.0.1
+```

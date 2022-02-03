@@ -51,4 +51,5 @@ echo $getTiktokUser->details('@evikza'); // or evikza
 
 ```code
 0.0.1
+0.0.1 — (04.02.2022): fixed user-agent
 ```

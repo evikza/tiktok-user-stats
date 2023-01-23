@@ -25,15 +25,16 @@ echo $getTiktokUser->details('@evikza'); // or evikza
     "id": "6827579470812759045",
     "username": "Евгений Заречнев",
     "profileName": "evikza",
-    "avatar": "https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1666889735789574~c5_720x720.jpeg?x-expires=1624140000&x-signature=rQ9dhz8zGm9EnYNTtwG7uDX1kaw%3D",
+    "avatar": "https://p16-sign-sg.tiktokcdn.com/aweme/720x720/tos-alisg-avt-0068/fe013a3c3fdb0e10e12edd1473d248f5.jpeg?x-expires=1674608400&x-signature=8CAqRvVxqiIiWXyjk1u4kKcFslQ%3D",
     "description": "",
+    "region": "RU",
     "verified": false
   },
   "stats": {
-    "following": 4,
-    "follower": 0,
-    "video": 0,
-    "like": 0
+    "following": 10,
+    "follower": 1,
+    "video": 2,
+    "like": 3
   }
 }
 ```
@@ -51,5 +52,8 @@ echo $getTiktokUser->details('@evikza'); // or evikza
 
 ```code
 0.0.1
-0.0.1 — (04.02.2022): fixed user-agent
+0.0.1 — Fixed User-Agent.
+
+0.0.2 — Fixed User-Agent.
+        Fixed (regex) lookup of JSON data on the page.
 ```

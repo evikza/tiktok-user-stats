@@ -54,7 +54,6 @@ final class Users
             'follower' => 'followerCount',
             'video' => 'videoCount',
             'like' => 'heartCount',
-            'heart' => 'heartCount',
           ],
         ]
       );
@@ -118,10 +117,11 @@ final class Users
       case 200:
         foreach ($template_ as $userInfoKey => $value) {
           foreach ($value as $key => $values) {
-            $object_[$userInfoKey][$key] =
+            $object_[str_replace('users', 'user', $userInfoKey)][$key] =
               $request_[$requestModule][$userInfoKey][$this->user][$values];
           }
         }
+
         break;
 
       case 404:

@@ -56,4 +56,6 @@ echo $getTiktokUser->details('@evikza'); // or evikza
 
 0.0.2 — Fixed User-Agent.
         Fixed (regex) lookup of JSON data on the page.
+
+0.0.3 — Fixed (regex) lookup of JSON data on the page.
 ```

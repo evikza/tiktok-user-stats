@@ -29,18 +29,24 @@ final class Users
     $request = $this->request();
 
     $response = $this->extract(
-      '/<script id="SIGI_STATE"([^>]+)>([^<]+)<\/script>/',
+      '/<script id="__UNIVERSAL_DATA_FOR_REHYDRATION__"([^>]+)>([^<]+)<\/script>/',
       $request
     );
 
+    $validateProps = $response['__DEFAULT_SCOPE__']['webapp.user-detail'];
+
+    if (!array_key_exists('userInfo', $validateProps)) {
+      $this->statusCode = 404;
+    }
+
     if ($this->statusCode) {
       return $this->template(
-        $response,
-        'UserModule',
+        $validateProps,
+        'userInfo',
         $this->object,
         $this->statusCode,
         [
-          'users' => [
+          'user' => [
             'id' => 'id',
             'username' => 'nickname',
             'profileName' => 'uniqueId',
@@ -74,7 +80,6 @@ final class Users
       CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
       CURLOPT_CUSTOMREQUEST => 'GET',
       CURLOPT_HTTPHEADER => [
-        'cookie: msToken=R45dciBnhPoA1Bz69EOS1LE9UDiEhQouwqJV8X6UIwqvcfazJ0fo77aw7XZc6BX1b7mwC23AQzArbKkMKRIRvacXW12yCGU4HY55',
         'user-agent: Mozilla/5.0 (compatible; Google-Apps-Script)',
       ],
     ]);
@@ -117,13 +122,12 @@ final class Users
       case 200:
         foreach ($template_ as $userInfoKey => $value) {
           foreach ($value as $key => $values) {
-            $object_[str_replace('users', 'user', $userInfoKey)][$key] =
-              $request_[$requestModule][$userInfoKey][$this->user][$values];
+            $object_[$userInfoKey][$key] =
+              $request_[$requestModule][$userInfoKey][$values];
           }
         }
 
         break;
-
       case 404:
         $object_['error'] = 'This account cannot be found.';
 
